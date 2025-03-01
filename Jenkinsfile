@@ -7,7 +7,7 @@ pipeline {
         REGISTRY = 'vigneshsiva94'
         IMAGE_NAME = 'bankapp'
         KUBE_CONFIG = credentials('kubeconfig')
-        SONARQUBE_CREDENTIALS = credentials('sonarqube-token')
+        SONARQUBE_CREDENTIALS = credentials('sonar-scanner')
         SONARQUBE_URL = 'http://localhost:9000'
         NEXUSURL ='http://localhost:8081'
     }
