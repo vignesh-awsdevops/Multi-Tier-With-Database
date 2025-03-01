@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/vignesh-awsdevops/Multi-Tier-with-Database.git'
+                git branch: 'main', url: 'https://github.com/vignesh-awsdevops/Multi-Tier-With-Database.git'
             }
         }
         
