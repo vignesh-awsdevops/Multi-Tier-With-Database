@@ -49,6 +49,11 @@ pipeline {
             }
         }
         
+        stage('Publish to Nexus') {
+            steps {
+                sh "mvn deploy -DaltDeploymentRepository=nexus::default::${NEXUS_URL}/repository/maven-releases/ -Dnexus.username=${NEXUS_CREDENTIALS_USR} -Dnexus.password=${NEXUS_CREDENTIALS_PSW}"
+            }
+        }        
         stage('Docker Build & Push') {
             steps {
                 script {
@@ -75,12 +80,12 @@ pipeline {
             archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
         }
         failure {
-            mail to: 'your-email@example.com',
+            mail to: 'vigneshsiva007@gmail.com',
                  subject: 'Jenkins Build Failed: ${JOB_NAME} #${BUILD_NUMBER}',
                  body: "Check Jenkins for details: ${BUILD_URL}"
         }
         success {
-            mail to: 'your-email@example.com',
+            mail to: 'vigneshsiva007@gmail.com',
                  subject: 'Jenkins Build Successful: ${JOB_NAME} #${BUILD_NUMBER}',
                  body: "The build has completed successfully: ${BUILD_URL}"
         }
